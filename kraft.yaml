@@ -1,0 +1,58 @@
+specification: '0.4'
+
+unikraft:
+  version: staging
+  kconfig:
+    # Enabled options needed by iperf3
+    - CONFIG_LIBUKLIBPARAM=y
+    - CONFIG_LIBUKSCHEDCOOP=y
+    - CONFIG_LIBSYSCALL_SHIM=y
+    - CONFIG_LIBPOSIX_LIBDL=y
+    - CONFIG_LIBPOSIX_PROCESS=y
+    - CONFIG_LIBPOSIX_USER=y
+    - CONFIG_LIBPOSIX_SYSINFO=y
+    - CONFIG_UKSYSINFO=y
+    - CONFIG_LIBUKMMAP=y
+    - CONFIG_LIBUKTIME=y
+    - CONFIG_LIBDEVFS=y
+    - CONFIG_LIBUKSWRAND=y
+    - CONFIG_LIBUKSWRAND_DEVFS=y
+    - CONFIG_LIBVFSCORE_AUTOMOUNT_ROOTFS=y
+    - CONFIG_LIBVFSCORE_ROOTFS_RAMFS=y
+    - CONFIG_LIBVFSCORE_ROOTFS="ramfs"
+
+architectures:
+  x86_64: true
+
+platforms:
+  kvm: true
+
+libraries:
+  pthread-embedded:
+    version: staging
+    kconfig:
+      - CONFIG_LIBPTHREAD_EMBEDDED=y
+  newlib:
+    version: staging
+    kconfig:
+      - CONFIG_LIBNEWLIBC=y
+  lwip:
+    version: staging
+    kconfig:
+      - CONFIG_LWIP_UKNETDEV=y
+      - CONFIG_LWIP_TCP=y
+      - CONFIG_LWIP_WND_SCALE=y
+      - CONFIG_LWIP_TCP_KEEPALIVE=y
+      - CONFIG_LWIP_THREADS=y
+      - CONFIG_LWIP_SOCKET=y
+      - CONFIG_LWIP_AUTOIFACE=y
+      - CONFIG_LWIP_IPV4=y
+      - CONFIG_LWIP_IPV6=y
+      - CONFIG_LWIP_DHCP=y
+      - CONFIG_LWIP_DNS=y
+      
+  iperf3:
+    version: staging
+    kconfig:
+      - CONFIG_LIBIPERF3=y
+      - CONFIG_LIBIPERF3_MAIN_FUNCTION=y
